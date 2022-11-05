@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 2vh 7vw;
+}
+h1, h2, h3 {
+    text-decoration: underline;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(47, 191, 174);
+    font-family: "Consolas", "Segoe UI", Arial, Helvetica, monospace;
+}
