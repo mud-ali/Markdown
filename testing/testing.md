@@ -1,4 +1,4 @@
-# Markdown
+# **Markdown**
 
 - one
 - two
@@ -8,4 +8,5 @@
 
 this is some normal stuff
 **bold me pls**
+*however, this should be in italics*
 ###### stuff

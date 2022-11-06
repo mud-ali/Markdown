@@ -15,6 +15,9 @@ def convert(file, output):
 
             if "**" in line:
                 line= boldify(line)
+                
+            if "*" in line:
+                line= italicize(line)
 
             if line.startswith("# "):
                 h1Cont = line.replace('# ','').replace('\n','')
@@ -36,15 +39,15 @@ def convert(file, output):
 
             
                 
-    htmlBody = cleanLists(htmlBody)
+    htmlBody = clean(htmlBody)
     with open("output/"+output+str(outputCount)+".html", 'a+') as htmlFile:
         outputCount += 1
         with open("tmp/outputCount","w") as outputCounter:
             outputCounter.write(str(outputCount))
         htmlFile.write(htmlHead+htmlBody+htmlClosing)
 
-def cleanLists(html):
-    return html.replace("</ul>\n\t<ul>","\t").replace("/li>\n\t\t\n<li",'/li>\n\t\t<li')
+def clean(html):
+    return html.replace("</ul>\n\t<ul>","\t").replace("/li>\n\t\t\n<li",'/li>\n\t\t<li').replace('>\t<','><')
 
 def boldify(text):
     s=text
@@ -54,7 +57,15 @@ def boldify(text):
         s = s.replace(res, "\t<b>"+res.replace("**",'')+"</b>\n")
     return s
 
-#add similar functions for italics, etc.            
+def italicize(text):
+    s=text
+    print(s)
+    results = re.findall('\*.*?\*', s)
+    for res in results:
+        s = s.replace(res, "\t<i>"+res.replace("*",'')+"</i>\n")
+    return s
+
+#TODO: add similar functions for italics, etc.             
 
 
 if __name__ == '__main__':
